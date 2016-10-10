@@ -1,0 +1,30 @@
+<meta charset="UTF-8">
+<div  ng-controller="actCtrl">
+    <section class="widget">
+		<h3 class="title">我发布的文章</h3>
+		<article class=" type-post format-standard hentry clearfix" ng-repeat="actData in send_actDatas">
+	
+			<header class="clearfix">
+	
+				<h3 class="post-title relative">
+					<a ng-href="/PetForum/#/detail/{{actData.id}}" ng-bind="actData.title"></a>
+					<a href="javascript:0" class="del-list-btn" title="删除文章" ng-click="del(actData.userId,actData.id,$index)" ng-show="{{actData.userId|delfilter}}">删除</a>
+				</h3>
+	
+				<div class="post-meta clearfix">
+					<span class="date" ng-bind="actData.createTime"></span> 
+					<span class="category" title="{{actData.userInfo.userName}}" ng-bind="actData.userInfo.userName"></span>
+					<span class="comments" title="{{actData.replyNum}}" ng-bind-template="{{actData.replyNum}} Comments"></span>
+				</div>
+				<!-- end of post meta -->
+			</header>
+			<p>
+				{{actData.abstext}}... <a class="readmore-link"
+					ng-href="/PetForum/#/detail/{{actData.id}}">Read
+					more</a>
+			</p>
+		</article>
+	</section>
+	<div id="pagination_send" class="pagination">
+		</div>
+</div>

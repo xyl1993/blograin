@@ -1,0 +1,243 @@
+a.logo-span{
+	color: #fff;
+    font-size: 23px;
+    position: absolute;
+    font-style: italic;
+    margin-left:0;
+    z-index:5;
+ }
+ a.logo-span:hover{
+     color:#fff;
+ }
+ span.tag-line{padding-left: 111px;}
+.relative{
+	position:relative
+}
+.form-control {
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    color: #555;
+    display: block;
+    font-size: 14px;
+    height: 34px;
+    line-height: 1.42857;
+    padding: 6px 12px;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    width: 100%;
+}
+.my-form-group{
+	padding-bottom:24px;
+}
+.my-form-group label{
+	font-size:21px;
+}
+.input-form-group{
+	padding-right:25px;
+}
+
+.uploader-list {
+    overflow: hidden;
+    width: 100%;
+}
+#uploader-demo .thumbnail {
+    height: 110px;
+    width: 110px;
+}
+.file-item {
+    float: left;
+    margin: 0 20px 20px 0;
+    padding: 4px;
+    position: relative;
+}
+.thumb{
+    height: 124px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.thumb img {
+    background-color: #333;
+    border: 2px solid #eff3f5;
+    float: left;
+    height: 120px;
+    margin-right: 10px;
+    width: 120px;
+}
+.top-question-ditails{
+	word-wrap: break-word;
+}
+
+#ctlBtn{
+	position: absolute;
+    top: 0;
+    left: 101px;
+}
+.del-list-btn{
+    right: 0;
+    font-size: 14px;
+    position: absolute;
+    color: rgba(0, 0, 0, 0.19);
+    width: 45px;
+    text-align: progress;
+    text-align: right;
+}
+.del-list-btn:hover{
+	color:#f0b70c
+}
+.menu-me-container{
+    position: absolute;
+    background: rgb(0, 0, 0);
+    color: #c1cad1;
+    margin-top: 17px;
+    background-color: #3b4348;
+    display:none;
+}
+.main-nav div.menu-me-container>ul>li{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor:pointer;
+}
+li.gr-li{
+    min-width: 80px;
+}
+.avatar-60{width:60px;height:60px;}
+.alert-info-dyn{
+	display:none;
+    height: 116px;
+    margin-bottom: -21px;
+    margin-right: -18px;
+    border: 1px solid #bce8f1;
+	width:222px;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    line-height: 16px;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -webkit-transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+    -o-transition: all 0.25s ease-in-out;
+}
+.write-round-dyn{
+	height:80px;
+    margin-top: -22px;
+    text-align: left;
+    line-height: 80px;
+    background-color: #fff;
+    cursor: pointer;
+}
+.info-sz-dyn {
+    margin-left: -62px;
+    display: none;
+}
+
+.info-dyn {
+    -moz-box-shadow: 0 -4px 0 rgba(153, 153, 153, 0.26) inset;
+    -webkit-box-shadow: 0 -4px 0 rgba(153, 153, 153, 0.26) inset;
+    box-shadow: 0 -4px 0 rgba(153, 153, 153, 0.26) inset;
+}
+.info-dyn {
+    background: #fff;
+    top: 0;
+    position: fixed;
+    left: 50%;
+    margin-left: -120px;
+    border-radius: 3px;
+    display: none;
+}
+.sz-dyn {
+    background: url(kqtj/images/info4.png) -1px -188px no-repeat;
+    padding: 12px 52px 12px 45px;
+}
+.info-dyn .glyphicon {
+    position: absolute;
+    top: 16px;
+    right: 12px;
+    font-size: 12px;
+    color: rgba(0,0,0,.6);
+}
+.pointer {
+    cursor: pointer;
+}
+.modal-header {
+    padding: 10px 15px;
+}
+.dl-dyn-input {
+    padding-top: 15px;
+}
+.sel-input-group {
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 14px;
+}
+.inp-ele {
+    position: relative;
+    float: left;
+    width: 100%;
+}
+.modal-title {
+	font-weight: 700;
+    font-size: 17px;
+    color: rgba(0, 0, 0, 0.53);
+}
+.inp-select {
+    display: block;
+    height: 36px;
+    border-radius: 3px;
+}
+.inp-select .select-val {
+    padding: 0;
+    /* width: 100%; */
+    position: relative;
+}
+.select-val {
+    width: 100%;
+    height: 38px;
+    font-size: 12px;
+    line-height: 12px;
+    color: rgba(0, 0, 0, 0.48);
+    border: 1px solid rgba(198, 198, 198, 0.53);
+    border-radius: 3px;
+    outline: 0;
+}
+.dialog-input {
+    width: 100%;
+    height: 38px;
+    padding-left: 5px;
+    border: none;
+    margin-bottom: 0px;
+    padding: 0;
+    text-indent: 10px;
+    right: 0px;
+    left: 0px;
+}
+input[type="email"].dialog-input{
+	width: 100%;
+    height: 38px;
+    padding-left: 5px;
+    border: none;
+    margin-bottom: 0px;
+    padding: 0;
+    text-indent: 10px;
+    right: 0px;
+    left: 0px;
+}
+.dl-dyn-input input {
+    list-style: none;
+    border-radius: 3px;
+}
+.box-item-right:after {
+    clear: both;
+    content: '';
+    display: block;
+}
+.area-val{
+	height:110px;
+}
+.dialog-textarea{
+	height:110px;
+}

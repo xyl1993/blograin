@@ -1,0 +1,306 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="lt-ie9 lt-ie8" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="lt-ie9" lang="en-US"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="mainModule">
+<!--<![endif]-->
+<head>
+<!-- META TAGS -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>小夏的博客</title>
+
+<link rel="shortcut icon" href="images/favicon.png" />
+
+
+
+
+<!-- Style Sheet-->
+<link rel="stylesheet" href="style.css" />
+<link rel='stylesheet' id='bootstrap-css-css'
+	href='css/bootstrap5152.css?ver=1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='responsive-css-css'
+	href='css/responsive5152.css?ver=1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='pretty-photo-css-css'
+	href='js/prettyphoto/prettyPhotoaeb9.css?ver=3.1.4' type='text/css'
+	media='all' />
+<link rel='stylesheet' id='main-css-css' href='css/main5152.css?ver=1.0'
+	type='text/css' media='all' />
+
+
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+                <script src="js/html5.js"></script></script>
+                <![endif]-->
+
+
+</head>
+
+<body  ng-controller="mainCtrl">
+
+	<!-- Start of Header -->
+	<div class="header-wrapper">
+		<header>
+			<div class="container">
+				<div class="logo-container">
+					<!-- Website Logo -->
+				    <a class="logo-span" href="/PetForum" title="SUMMER"><span>SUMMER</span></a>
+					 <span class="tag-line">小夏的博客</span>
+				</div>
+				<!-- Start of Main Navigation -->
+				<nav class="main-nav">
+					<div class="menu-top-menu-container">
+						<ul id="menu-top-menu" class="clearfix">
+							<li class="current-menu-item"><a ui-sref="list">首页</a></li>
+							<li><a target="_blank" href="sendActical.html">发布信息</a></li>
+							<li><a href="javascript:0" ng-click="yjfkClick()">意见反馈</a></li>
+							<!-- 
+							<li><a href="index-2.html">关于我们</a></li>
+							<li><a href="contact.html">加入我们</a></li>
+							 -->
+							<li class="dl-li"><a href="login/login.html">登录</a></li>
+							<li class="gr-li"><a href="javascript:0" module-click  ng-bind-template="欢迎您:{{userName}}"></a>
+							    <div class="menu-me-container">
+							        <ul>
+							            <li><a href="./user.html">个人中心</a></li>
+							            <li><a ng-click="loginout()">注销</a></li>
+							        </ul>
+							    </div>
+							</li>
+						</ul>
+					</div>
+					<select class="responsive-nav">
+					    <option value="list"> 首页</option>
+					    <option value="fb"> 发布信息</option>
+					    <!-- <option value="about"> 关于我们</option>
+					    <option value="join"> 加入我们</option> -->
+					    <option value="yj"> 意见反馈</option>
+					    <option value="login"> 登录</option>
+					    <option value="me"> 个人中心 </option>
+					    <option value="zx"> 注销 </option>
+				    </select>
+				</nav>
+				<!-- End of Main Navigation -->
+			</div>
+		</header>
+	</div>
+	<!-- End of Header -->
+
+	<!-- Start of Search Wrapper -->
+	<div class="search-area-wrapper">
+		<div class="search-area container">
+			<form id="search-form" class="search-form clearfix">
+				<input class="search-term" type="text" id="searchText" name="searchText"
+					placeholder="支持模糊搜索"/> <input class="search-btn"
+					type="button" id="act-search-btn" value="搜索" ng-click="search()" />
+			</form>
+		</div>
+	</div>
+	<!-- End of Search Wrapper -->
+
+	<!-- Start of Page Container -->
+	<div class="page-container">
+		<div class="container">
+			<div class="row">
+                <div class="span8 main-listing" ui-view>
+                
+                </div>
+				<!-- start of sidebar -->
+				<aside class="span4 page-sidebar">
+
+					<section class="widget">
+						<div class="support-widget">
+							<h3 class="title">Support</h3>
+							<p class="intro">如果您有任何问题，请及时联系我们.</p>
+						</div>
+					</section>
+
+
+					<section class="widget">
+						<h3 class="title">热门文章</h3>
+						<ul class="articles">
+							<li class="article-entry standard" ng-repeat="hotActData in hotActDatas">
+								<h4>
+									<a ui-sref="detail({id:hotActData.id})" ng-bind="hotActData.title"></a>
+								</h4> <span class="article-meta" ng-bind-template="{{hotActData.createTime}}&nbsp;&nbsp;in&nbsp;&nbsp;{{hotActData.userName}}"></span>
+							</li>
+						</ul>
+					</section>
+					
+					<section class="widget">
+						<h3 class="title">最新文章</h3>
+						<ul class="articles">
+							<li class="article-entry standard" ng-repeat="hotActData in newActDatas">
+								<h4>
+									<a ui-sref="detail({id:hotActData.id})" ng-bind="hotActData.title"></a>
+								</h4> <span class="article-meta" ng-bind-template="{{hotActData.createTime}}&nbsp;&nbsp;in&nbsp;&nbsp;{{hotActData.userName}}"></span>
+							</li>
+						</ul>
+					</section>
+					<!--  
+					<section class="widget">
+						<h3 class="title">Categories</h3>
+						<ul>
+							<li><a href="#" title="Lorem ipsum dolor sit amet,">Advanced
+									Techniques</a></li>
+							<li><a href="#" title="Lorem ipsum dolor sit amet,">Designing
+									in WordPress</a></li>
+							<li><a href="#" title="Lorem ipsum dolor sit amet,">Server
+									&amp; Database</a></li>
+							<li><a href="#" title="Lorem ipsum dolor sit amet, ">Theme
+									Development</a></li>
+							<li><a href="#" title="Lorem ipsum dolor sit amet,">Website
+									Dev</a></li>
+							<li><a href="#" title="Lorem ipsum dolor sit amet,">WordPress
+									for Beginners</a></li>
+							<li><a href="#" title="Lorem ipsum dolor sit amet, ">WordPress
+									Plugins</a></li>
+						</ul>
+					</section>
+
+					<section class="widget">
+						<h3 class="title">Recent Comments</h3>
+						<ul id="recentcomments">
+							<li class="recentcomments"><a href="#"
+								rel="external nofollow" class="url">John Doe</a> on <a href="#">Integrating
+									WordPress with Your Website</a></li>
+							<li class="recentcomments">saqib sarwar on <a href="#">Integrating
+									WordPress with Your Website</a></li>
+							<li class="recentcomments"><a href="#"
+								rel="external nofollow" class="url">John Doe</a> on <a href="#">Integrating
+									WordPress with Your Website</a></li>
+							<li class="recentcomments"><a href="#"
+								rel="external nofollow" class="url">Mr WordPress</a> on <a
+								href="#">Installing WordPress</a></li>
+						</ul>
+					</section>
+					-->
+				</aside>
+				<!-- end of sidebar -->
+			</div>
+		</div>
+	</div>
+	<!-- End of Page Container -->
+
+	<!-- Start of Footer -->
+	<footer id="footer-wrapper">
+		<!-- Footer Bottom -->
+		<div id="footer-bottom-wrapper">
+			<div id="footer-bottom" class="container">
+				<div class="row">
+					<div class="span6">
+						<p class="copyright">
+							Copyright © 2014-2016 YUNZHUJIA.CN .All Rights Reserved.苏ICP备13020149号
+						</p>
+					</div>
+					<div class="span6">
+						<!-- Social Navigation -->
+						<ul class="social-nav clearfix">
+							<li class="linkedin"><a target="_blank" href="#"></a></li>
+							<li class="stumble"><a target="_blank" href="#"></a></li>
+							<li class="google"><a target="_blank" href="#"></a></li>
+							<li class="deviantart"><a target="_blank" href="#"></a></li>
+							<li class="flickr"><a target="_blank" href="#"></a></li>
+							<li class="skype"><a target="_blank" href="skype:#?call"></a></li>
+							<li class="rss"><a target="_blank" href="#"></a></li>
+							<li class="twitter"><a target="_blank" href="#"></a></li>
+							<li class="facebook"><a target="_blank" href="#"></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End of Footer Bottom -->
+
+	</footer>
+	<!-- End of Footer -->
+
+	<a href="#top" id="scroll-top"></a>
+	<!-- 消息通知 -->
+    <div class="alert-info-dyn" id="info-alert">
+        <div class="alert alert-info alert-dismissible" role="alert">
+		  <button type="button" class="close" close-alert data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+		  	提示
+		</div>
+		<div class="write-round-dyn" return-info>
+		    {{message}}
+		</div>
+    </div>
+        <!-- 弹出框提示 -->
+  <div class="info-dyn info-sz-dyn">
+      <div class="info-detail-dyn sz-dyn">
+      </div>
+      <span class="glyphicon glyphicon-remove pointer"></span>  
+    </div>
+    <!-- 修改密码弹出框 -->
+  <div class="modal fade" style="display: none;" role="dialog" id="xgmmModal" aria-labelledby="gridSystemModalLabel" ng-controller="yjfkCtrl" >
+    <div class="modal-dialog user-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <div class="modal-title" id="gridSystemModalLabel">意见反馈</div>
+        </div>
+        <div class="modal-body yj-body"><!-- -->
+           <div class="container-fluid">
+            <!-- 下拉框通过angularjs数据绑定,将下拉值绑定到div中 -->
+            <form id="editPassForm" class="form-signin dl-dyn-input" name="editPassForm">
+            <div class="sel-input-group">
+              <label>标题</label>
+              <div class="box-item-right">
+                <label class="inp-select inp-ele">
+                  <div class="select-val">
+                    <input class="dialog-input"  id="up_title" name="up_title" ng-model="up_title" required=""/>
+                  </div> 
+                </label>
+              </div>
+            </div>
+            <div class="sel-input-group">
+              <label>邮箱</label>
+              <div class="box-item-right">
+                <label class="inp-select inp-ele">
+                  <div class="select-val">
+                    <input type="email" class="dialog-input" id="up_email" name="up_email" ng-model="up_email" required/>
+                  </div> 
+                </label>
+              </div>
+            </div>
+            <div class="sel-input-group">
+              <label> 建议</label>
+              <div class="box-item-right">
+                <label class="inp-select inp-ele area-val">
+                  <div class="select-val area-val">
+                    <textarea class="dialog-input dialog-textarea" id="up_text" name="up_text" required ng-model="up_text" rows="5" cols=""></textarea>
+                  </div> 
+                </label>
+              </div>
+            </div>
+            <button type="submit" id="yj-subtn" class="btn btn-info btn-lg btn-block">提交</button>
+            </form>
+          </div>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+	<!-- script -->
+	<script type='text/javascript' src="kqtj/js/jquery.min.js"></script>
+	<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script type='text/javascript' src="js/jquery.easing.1.34e44.js"></script>
+	<script type='text/javascript'
+		src="js/prettyphoto/jquery.prettyPhotoaeb9.js"></script>
+	<script type='text/javascript' src="js/jquery.liveSearchd5f7.js"></script>
+	<script type='text/javascript' src="js/jflickrfeed.js"></script>
+	<script type='text/javascript' src="js/jquery.formd471.js"></script>
+	<script src="kqtj/js/jquery.twbsPagination.js" type="text/javascript"></script>
+	<script type='text/javascript' src="js/jquery.validate.minfc6b.js"></script>
+	<script type='text/javascript' src="js/custom5152.js"></script>
+	<script type="text/javascript" src="angular/angular.js"></script>
+    <script type="text/javascript" src="angular/angular-ui-router.js"></script>
+    <script type="text/javascript" src="angular/angular-sanitize.min.js"></script>
+    <script type="text/javascript" src="angular/angular-resource.min.js"></script>
+    <script src="bower_components/angular-websocket/dist/angular-websocket.min.js"></script>
+    <script src="main/js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+/*--¿é×´ºÐ×ÓÄ£ÐÍ--*/
+.clearfix {
+    zoom: 1;
+    display: block;
+}
+.clearfix:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+}
+
+li {
+    list-style: none;
+}
+.facebox ul {
+    background: #fff;
+    margin: 0px 0px;
+    padding: 0;
+}
+.facebox ul li {
+    cursor: pointer;
+    padding: 10px;
+    float: left;
+    overflow: hidden;
+}
+.facebox ul li img {
+    width: 22px;
+    height: 22px;
+    display: block;
+    background: #fff;
+}
+.facebox ul li:hover {
+	background:rgba(0,0,0,.1)
+}
+#face {
+    display: none;
+    width: 100%;
+    z-index: 999999;
+    text-align: left;
+    margin: 15px 0px;
+    padding: 10px 5px;
+    background: rgba(0,0,0,.3);
+    border-radius: 5px;
+}
+
+
+#texttb .f_close {
+    position: absolute;
+    right: 14px;
+    top: 5px;
+    z-index: 99;
+}
+.f_close {
+    background: url("delete_items.gif") no-repeat scroll transparent;
+    cursor: pointer;
+    display: block;
+    height: 19px;
+    width: 19px;
+}
+.arrow {
+    background: url("layer_arrow.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    overflow: hidden;
+    position: absolute;
+}
+.arrow_t {
+    background-position: 0 -1px;
+    height: 11px;
+    width: 16px;
+    left: 30px;
+    top: -11px;
+}
+
+#box{
+ min-height:130px;
+ height:auto;
+ }
+ 
+ .content-text img{
+	 width:22px;
+	 height:22px;
+ }
+ 
+ .labelVolidate{
+ 	float:left;
+ }

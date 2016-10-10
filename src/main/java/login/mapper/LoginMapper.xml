@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="login.mapper.LoginMapper">
+	<resultMap type="login.model.UserInfo" id="userMap">
+		<id column="id" property="id" />
+		<result column="user_name" property="userName" />
+		<result column="head_url" property="headUrl" />
+		<result column="email" property="email" />
+		<result column="create_time" property="createTime" />
+		<result column="modify_time" property="modifyTime" />
+		<result column="tel" property="tel" />
+		<result column="token" property="token" />
+		<result column="login_status" property="loginStatus" />
+		<result column="last_login_time" property="lastLoginTime" />
+	</resultMap>
+	
+	<insert id="register" parameterType="login.model.UserInfo">
+	    insert into t_user_info (
+	        user_name,
+	        login_id,
+	        email,
+	        create_time,
+	        password,
+	        modify_time,
+	        token,
+	        head_url
+	        )values(
+	        #{userName},
+	        #{userName},
+	        #{email},
+	        now(),
+	        #{password},
+	        now(),
+	        #{token},
+	        #{headUrl}
+        )
+	</insert>
+	
+	<select id="getUserData" parameterType="login.model.UserInfo" resultMap="userMap">
+		select user_name,email,head_url,create_time,modify_time,tel,token,last_login_time from t_user_info 
+		<where>
+  			email = #{email} and password=#{password}
+		</where>
+	</select>
+	
+	<select id="selectByLogin" parameterType="login.model.UserInfo" resultMap="userMap">
+		select id,user_name,email,head_url,create_time,modify_time,tel,token,last_login_time from t_user_info 
+		<where>
+  			email = #{email} and password=#{password}
+		</where>
+	</select>
+	
+	<select id="selectOne" parameterType="string" resultType="int">
+		select count(0) from t_user_info 
+		<where>
+  			email = #{email}
+		</where>
+	</select>
+	
+	<select id="getUserDataDetail" resultType="login.model.UserInfo">
+		select id,user_name as userName,head_url as headUrl,email from t_user_info 
+		where id = #{value}
+	</select>
+	
+	<select id="getSendNum" resultType="int">
+		select count(1) from t_invitation where user_id=#{value}
+	</select>
+	
+	<select id="getReplyNum" resultType="int">
+		select count(1) from t_reply where user_id=#{value}
+	</select>
+	
+	<select id="getInfoNum" resultType="int">
+		select count(1) from t_info where user_id=#{value}
+	</select>
+	
+	<update id="updatePic">
+		update t_user_info set head_url = #{headUrl} where id = #{id}
+	</update>
+	
+	<update id="updateUser">
+		update t_user_info 
+			set 
+		    user_name = #{userName},
+		    modify_time = now(),
+		    tel = #{tel}
+	    where token = #{token}
+	</update>
+	
+	<update id="updateByLogin" parameterType="login.model.UserInfo">
+		update t_user_info set
+		login_status = #{loginStatus},token=#{token},last_login_time=NOW() where email = #{email}
+	</update>
+	
+	<update id="userLogout" parameterType="string">
+		update t_user_info set
+		login_status = 0 where token = #{value}
+	</update>
+	
+	<select id="getUserDetail" parameterType="string" resultMap="userMap">
+		select * from t_user_info  where token = #{value}
+	</select>
+	
+	<select id="getUserIdByToken" parameterType="String" resultType="int">
+		select id from t_user_info 
+		<where>
+  			token = #{value}
+		</where>
+	</select>
+	
+	<select id="selectOneByTokenAndPassword" resultType="int" parameterType="login.model.UserInfo">
+		select count(1) from t_user_info where token=#{token} and password = #{password}
+	</select>
+	
+	<update id="updatePassWord" parameterType="login.model.UserInfo">
+		update t_user_info set
+		password = #{newPassword} where token = #{token}
+	</update>
+</mapper>
