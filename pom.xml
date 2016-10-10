@@ -1,13 +1,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>pet-forum</groupId>
-  <artifactId>PetForum</artifactId>
+  <groupId>blograin</groupId>
+  <artifactId>blograin</artifactId>
   <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
   <name>summerSys Maven Webapp</name>
   <url>http://maven.apache.org</url>
-  <properties>  
+  <properties>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
       <!-- spring版本号 -->  
       <spring.version>4.0.2.RELEASE</spring.version>  
       <!-- mybatis版本号 -->  
@@ -186,6 +187,16 @@
 	</dependency>
   </dependencies>
   <build>
-    <finalName>PetForum</finalName>
+    <finalName>blograin</finalName>
+     <plugins>
+      <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-war-plugin</artifactId>
+          <version>2.1.1</version>
+          <configuration>
+              <warName>blograin</warName>
+          </configuration>
+      </plugin>
+    </plugins>
   </build>
 </project>
