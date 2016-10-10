@@ -1,0 +1,373 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="lt-ie9 lt-ie8" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="lt-ie9" lang="en-US"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en-US">
+<!--<![endif]-->
+<head>
+<!-- META TAGS -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>小夏的博客</title>
+
+<link rel="shortcut icon" href="images/favicon.png" />
+
+
+
+
+<!-- Style Sheet-->
+<link rel="stylesheet" href="style.css" />
+<link rel='stylesheet' id='bootstrap-css-css'
+	href='css/bootstrap5152.css?ver=1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='responsive-css-css'
+	href='css/responsive5152.css?ver=1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='pretty-photo-css-css'
+	href='js/prettyphoto/prettyPhotoaeb9.css?ver=3.1.4' type='text/css'
+	media='all' />
+<link rel='stylesheet' id='main-css-css' href='css/main5152.css?ver=1.0'
+	type='text/css' media='all' />
+<link rel='stylesheet' id='custom-css-css'
+	href='css/custom5152.html?ver=1.0' type='text/css' media='all' />
+	<!-- include summernote css/js-->
+<!-- summernote -->
+<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css" />
+<link href="bower_components/summernote/summernote.css" rel="stylesheet">
+<link rel="stylesheet" href="bower_components/webuploader/webuploader.css" />
+
+
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+                <script src="js/html5.js"></script></script>
+                <![endif]-->
+
+
+</head>
+
+<body>
+
+	<!-- Start of Header -->
+	<div class="header-wrapper">
+		<header>
+			<div class="container">
+				<div class="logo-container">
+					<!-- Website Logo -->
+				    <a class="logo-span" href="/" title="SUMMER"><span>SUMMER</span></a>
+					 <span class="tag-line">小夏的博客</span>
+				</div>
+				<!-- Start of Main Navigation -->
+				<nav class="main-nav">
+					<div class="menu-top-menu-container">
+						<ul id="menu-top-menu" class="clearfix">
+							<li><a href="index.html">首页</a></li>
+							<!--
+							<li><a href="index-2.html">关于我们</a></li>
+							<li><a href="contact.html">加入我们</a></li>
+							  -->
+							<li class="gr-li"><a href="javascript:0" title="点击注销" id="user"></a></li>
+						</ul>
+					</div>
+				</nav>
+				<!-- End of Main Navigation -->
+
+			</div>
+		</header>
+	</div>
+	<!-- End of Header -->
+
+	<!-- Start of Page Container -->
+	<div class="page-container">
+		<div class="container">
+			<div class="row">
+				<form role="form" id="commentForm">
+				  <div class="form-group my-form-group input-form-group">
+				    <label for="exampleInputEmail1">标题</label>
+				    <input type="input" class="form-control" name="title" id="title" placeholder="请输入标题" />
+				  </div>
+				  <div class="form-group my-form-group input-form-group">
+				    <label for="exampleInputEmail1">摘要</label>
+				    <textarea type="input" class="form-control" name="abstext" id="abstext" style="height:80px;" placeholder="请输入摘要"></textarea>
+				  </div>
+				  <div class="form-group my-form-group input-form-group">
+				    <label for="exampleInputEmail1">标题图片(最多支持3张图片)</label>
+				    <div id="uploader-demo">
+					    <!--用来存放item-->
+					    <div id="fileList" class="uploader-list"></div>
+					    <div class="file-btns relative">
+					         <div id="filePicker">选择图片</div>
+					    	<a id="ctlBtn" class="btn btn-default">取消上传</a>
+					    </div>
+					</div>
+				  </div>
+				  <div class="form-group my-form-group">
+				    <label for="exampleInputEmail1">正文</label>
+				    <div class="summernote form-control"></div>
+				  </div>
+				  <button type="submit" id="submit" class="btn btn-default">提交</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- End of Page Container -->
+
+	<!-- Start of Footer -->
+	<footer id="footer-wrapper">
+		<!-- Footer Bottom -->
+		<div id="footer-bottom-wrapper">
+			<div id="footer-bottom" class="container">
+				<div class="row">
+					<div class="span6">
+						<p class="copyright">
+							Copyright © www.soujiu911.com 北京护宠科技有限公司 
+						</p>
+					</div>
+					<div class="span6">
+						<!-- Social Navigation -->
+						<ul class="social-nav clearfix">
+							<li class="linkedin"><a target="_blank" href="#"></a></li>
+							<li class="stumble"><a target="_blank" href="#"></a></li>
+							<li class="google"><a target="_blank" href="#"></a></li>
+							<li class="deviantart"><a target="_blank" href="#"></a></li>
+							<li class="flickr"><a target="_blank" href="#"></a></li>
+							<li class="skype"><a target="_blank" href="skype:#?call"></a></li>
+							<li class="rss"><a target="_blank" href="#"></a></li>
+							<li class="twitter"><a target="_blank" href="#"></a></li>
+							<li class="facebook"><a target="_blank" href="#"></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End of Footer Bottom -->
+
+	</footer>
+	<!-- End of Footer -->
+
+
+	<!-- script -->
+	<script type='text/javascript' src="kqtj/js/jquery.min.js"></script>
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+	<script type="text/javascript" src="bower_components/summernote/summernote.min.js"></script>
+	<script type='text/javascript' src="js/jquery.validate.minfc6b.js"></script>
+	<script type='text/javascript' src="bower_components/webuploader/webuploader.min.js"></script>
+    <script>
+    $(function () {
+    	var token = sessionStorage.getItem('token');
+    	if(!token || token=='null'){
+    		location.href="login/login.html"
+    	}
+    	$('#user').html('欢迎您:'+sessionStorage.getItem('userName'));
+        // $('#menu').metisMenu();
+        $('.summernote').summernote({
+           height: 342,   // sets the height of the editor 
+           // width:500,
+          focus: false,
+          toolbar: [
+            //['style', ['style']], // no style button
+            ['style', ['bold', 'italic', 'underline', 'clear']],
+            ['fontsize', ['fontsize']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['height', ['height']],
+            ['insert', ['picture', 'link']], // no insert buttons
+            ['table', ['table']], // no table button
+            //['help', ['help']] //no help button
+          ],
+          onImageUpload: function (files, editor, $editable) {
+              sendFile(files[0], editor, $editable);
+          }
+        });
+        function sendFile(file, editor, $editable) {
+            var rFilter = /^(image\/jpeg|image\/png)$/i;
+            if (! rFilter.test(file.type)) {
+                alert('请选择图片文件');
+                return;
+            }
+            var xhr;
+            try {
+                xhr = new XMLHttpRequest();//尝试创建 XMLHttpRequest 对象，除 IE 外的浏览器都支持这个方法。
+            } catch (e) {
+                xhr = ActiveXobject("Msxml12.XMLHTTP");//使用较新版本的 IE 创建 IE 兼容的对象（Msxml2.XMLHTTP）。
+            }
+            if (xhr.upload) {
+                // 文件上传成功或是失败
+                xhr.onreadystatechange = function (e) {
+                    if (xhr.readyState == 4) {
+                        if (xhr.status == 200) {
+                        	var resp = JSON.parse(xhr.responseText);
+                        	if(resp.success){
+                        		$('.summernote').summernote('editor.insertImage', "http://192.168.60.136:8080"+resp.data.replace(/\\/g,"/"));
+                        	}
+                        } else {
+                            alert('服务器出错');
+                        }
+                    }
+                };
+                xhr.open("POST", "actical/uploadFile", true);
+                xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+                xhr.setRequestHeader("token", token);
+
+                var fd = new FormData();
+                fd.append("file", file);
+                xhr.send(fd);
+            }
+        }
+      });
+    </script>
+    <script>
+        var imgArr = [],file_count = 0,$file = [];
+        var token = sessionStorage.getItem('token');
+		// 初始化Web Uploader
+		var uploader = WebUploader.create({
+	
+		    // 选完文件后，是否自动上传。
+		    auto: true,
+	
+		    // swf文件路径
+		    swf:  'bower_components/webuploader/Uploader.swf',
+	
+		 // 文件接收服务端。
+		    server: 'actical/uploadFile',
+	
+		    // 选择文件的按钮。可选。
+		    // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+		    pick: '#filePicker',
+	
+		    // 只允许选择图片文件。
+		    accept: {
+		        title: 'Images',
+		        extensions: 'gif,jpg,jpeg,bmp,png',
+		        mimeTypes: 'image/*'
+		    }
+		});
+		// 当有文件添加进来的时候
+		uploader.on( 'fileQueued', function( file ) {
+			if($('.file-item').length==3){
+				return
+			}
+			$file.push(file);
+			$('.default-img').remove();
+		    var $li = $(
+		            '<div id="' + file.id + '" class="file-item thumbnail">' +
+		                '<img>' +
+		                '<div class="info">' + file.name + '</div>' +
+		            '</div>'
+		            ),
+		        $img = $li.find('img');
+	        var $list = $('#fileList');
+	        
+		    // $list为容器jQuery实例
+		    $list.append( $li );
+	
+		    // 创建缩略图
+		    // 如果为非图片文件，可以不用调用此方法。
+		    // thumbnailWidth x thumbnailHeight 为 100 x 100
+		    uploader.makeThumb( file, function( error, src ) {
+		        if ( error ) {
+		            $img.replaceWith('<span>不能预览</span>');
+		            return;
+		        }
+		        $img.attr( 'src', src );
+		    }, 180, 180 );
+		});
+		// 文件上传过程中创建进度条实时显示。
+		uploader.on( 'uploadProgress', function( file, percentage ) {
+		    var $li = $( '#'+file.id ),
+		        $percent = $li.find('.progress span');
+		    // 避免重复创建
+		    if ( !$percent.length ) {
+		        $percent = $('<p class="progress"><span></span></p>')
+		                .appendTo( $li )
+		                .find('span');
+		    }
+	
+		    $percent.css( 'width', percentage * 100 + '%' );
+		});
+	
+		// 文件上传成功，给item添加成功class, 用样式标记上传成功。
+		uploader.on( 'uploadSuccess', function( file,res) {
+			imgArr.push(res.data.replace(/\\/g,"/"));
+		    $( '#'+file.id ).addClass('upload-state-done');
+		});
+		// 文件上传成功，给item添加成功class, 用样式标记上传成功。
+		uploader.on( 'uploadBeforeSend', function(obj,data,headers) {
+			headers.token = token;
+		});
+		// 文件上传失败，显示上传出错。
+		uploader.on( 'uploadError', function( file ) {
+		    var $li = $( '#'+file.id ),
+		        $error = $li.find('div.error');
+	
+		    // 避免重复创建
+		    if ( !$error.length ) {
+		        $error = $('<div class="error"></div>').appendTo( $li );
+		    }
+	
+		    $error.text('上传失败');
+		});
+	
+		// 完成上传完了，成功或者失败，先删除进度条。
+		uploader.on( 'uploadComplete', function( file ) {
+		    $( '#'+file.id ).find('.progress').remove();
+		});
+		$.validator.setDefaults({
+		  	debug:true,
+		    rules: {
+		    title: {
+		        required: true,
+		        minlength: 3,
+		     	maxlength:45
+		      },
+		      abstext:{
+		      	required: true,
+		      	minlength: 5,
+		      	maxlength:500
+		      },
+		    },
+		    messages: {
+		    	title: {
+		    		required: "请输入标题",
+			        minlength: "长度不能小于3个字符",
+			        maxlength:'长度不能多于45个字符'
+			      },
+		      abstext: {
+		        required: "请输入摘要",
+		        minlength: "长度不能小于5个字符",
+		        maxlength:'长度不能多于500个字符'
+		      }
+		    },
+    	    submitHandler: function(form) {
+    	      var data = {},token = sessionStorage.getItem('token');
+    	      data.title = $('#title').val();
+    	      data.content = $('.summernote').code();
+    	      data.abstext = $('#abstext').val();
+    	      data.titleImg = imgArr.join();
+    	      $.ajax({
+    	    	  url: 'actical/save',
+    	    	  data:JSON.stringify(data),
+    	    	  method:'POST',
+    	  		  contentType: 'application/json',
+    	  		  headers:{"token":token},
+    	       }).success(function(resp) {
+    				if(resp.success){
+    					alert('发布成功');
+    				}
+    			});
+    	    }
+    	});
+		$('#ctlBtn').click(function(){
+			imgArr = [];
+			file_count = 0;
+			for(var i=0,len=$file.length;i<len;i++){
+				uploader.removeFile($file[i].id,true);
+			}
+			$file = [];
+			$('#fileList div').remove();
+		})
+    	$().ready(function() {
+    	    $("#commentForm").validate();
+    	});
+    </script>
+</body>
+</html>

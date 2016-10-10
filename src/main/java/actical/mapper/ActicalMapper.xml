@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="actical.mapper.ActicalMapper">
+	<resultMap id="meMap" type="actical.model.ActicalModel">
+		<id property="id" column="id" jdbcType="VARCHAR" />
+		<result property="userId" column="user_id" />
+		<result property="title" column="title" />
+		<result property="content" column="content" />
+		<result property="collectionNum" column="collection_num" />
+		<result property="titleImg" column="title_img" />
+		<result property="attentionNum" column="attention_num" />
+		<result property="createTime" column="create_time"/>
+		<result property="abstext" column="abstext" />
+		<association property="userInfo" column="user_id"
+			select="actical.mapper.ActicalMapper.selectOne" javaType="login.model.UserInfo">
+		</association>
+		<association property="replyNum" column="id"
+			select="actical.mapper.ActicalMapper.getReplyCount">
+		</association>
+	</resultMap>
+	<resultMap id="plMap" type="actical.model.PlModel">
+		<id property="id" column="id" jdbcType="VARCHAR" />
+		<result property="userId" column="user_id" />
+		<result property="invitationId" column="invitation_id" />
+		<result property="content" column="content" />
+		<result property="replyTime" column="reply_time"/>
+		<result property="userName" column="user_name"/>
+		<result property="replayName" column="replay_name"/>
+		<result property="replayContent" column="replay_content"/>
+		<result property="headUrl" column="head_url"/>
+	</resultMap>
+	<resultMap type="login.model.UserInfo" id="detailResultMap">
+		<id column="id" property="id" />
+		<result column="user_name" property="userName" />
+		<result column="head_url" property="headUrl"
+			/>
+	</resultMap>
+	<resultMap type="actical.model.ActicalModel" id="actMap">
+		<id column="id" property="id" />
+		<result column="replyNum" property="replyNum" />
+		<result column="title" property="title"/>
+		<result column="content" property="content"/>
+		<result column="abstext" property="abstext"/>
+		<result column="create_time" property="createTime"/>
+		<result column="user_name" property="userName"/>
+	</resultMap>
+	<resultMap type="actical.model.InfoModel" id="infoMap">
+		<id column="id" property="id" />
+		<result column="user_id" property="userId" />
+		<result column="is_read" property="isRead"/>
+		<result column="invitation_id" property="invitationId"/>
+		<result column="title" property="title"/>
+		<result column="content" property="content"/>
+	</resultMap>
+	<insert id="save" parameterType="actical.model.ActicalModel">
+	    insert into t_invitation (
+	        user_id,
+	        title,
+	        content,
+	        abstext,
+	        create_time,
+	        title_img
+	        )values(
+	        #{userId},
+	        #{title},
+	        #{content},
+	        #{abstext},
+	        #{createTime},
+	        #{titleImg}
+        )
+	</insert>
+	<select id="getActList" parameterType="map" resultMap="meMap">
+		select id,user_id,title,reply_num,collection_num,attention_num,create_time,abstext,title_img from t_invitation
+		<where>
+			<if test="searchText!= null and searchText!= '' ">
+      			and title like CONCAT(CONCAT('%', #{searchText}),'%')  
+      		</if>
+      		<if test="userId!= null and userId!= '' ">
+      			and user_id = #{userId}
+      		</if>
+		</where> 
+		GROUP BY create_time DESC
+		limit #{rowNum},#{pageSize}
+	</select>
+	
+	<select id="getHotActList" parameterType="map" resultMap="actMap">
+		SELECT
+			count(1) AS replyNum,
+		  a.id,
+		  a.title,
+		  a.create_time,
+		  b.user_name
+		FROM
+			t_reply t
+		LEFT JOIN t_invitation a ON t.invitation_id = a.id
+		LEFT JOIN t_user_info b on a.user_id = b.id
+		GROUP BY
+			t.invitation_id
+		ORDER BY
+			replyNum DESC
+		LIMIT 0,
+		 4
+	</select>
+	
+	<select id="getNewActList" parameterType="map" resultMap="actMap">
+		SELECT
+			t.id,
+			u.user_name,
+			t.title,
+			t.create_time
+		FROM
+			t_invitation t
+		LEFT JOIN t_user_info u on t.user_id = u.id
+		GROUP BY
+			t.create_time DESC
+		LIMIT 0,
+		 4
+	</select>
+	
+	<select id="getMyActList" parameterType="map" resultMap="actMap">
+		SELECT
+			count(1) AS replyNum,
+		  a.id,
+		  a.title,
+		  a.create_time,
+		  a.content,
+		  a.abstext,
+		  b.user_name
+		FROM
+			t_reply t
+		LEFT JOIN t_invitation a ON t.invitation_id = a.id
+		LEFT JOIN t_user_info b on a.user_id = b.id
+		<where>
+			<if test="searchText!= null and searchText!= '' ">
+      			and a.title like CONCAT(CONCAT('%', #{searchText}),'%')  
+      		</if>
+      		<if test="userId!= null and userId!= '' ">
+      			and t.user_id = #{userId}
+      		</if>
+		</where> 
+		GROUP BY
+			t.invitation_id
+		ORDER BY
+			a.create_time DESC
+		limit #{rowNum},#{pageSize}
+	</select>
+	
+	<select id="getActDetail" parameterType="map" resultMap="meMap">
+		select id,user_id,title,content,reply_num,collection_num,attention_num,create_time,abstext,title_img from t_invitation 
+		<where>
+			<if test="id!= null and id!= '' ">
+      			AND id = #{id}
+      		</if>
+		</where>
+	</select>
+	<select id="getActListCount" resultType="int">
+		select count(0) from t_invitation
+	</select>
+	<select id="selectOne" resultMap="detailResultMap"
+		parameterType="int">
+		select id,user_name,head_url from
+		t_user_info where id =
+		#{value}
+	</select>
+	<select id="getplList" parameterType="int" resultMap="plMap">
+		SELECT
+		    a.user_id,
+			a.id,
+			a.invitation_id,
+			a.content,
+			a.reply_time,
+			b.content as replay_content,
+			c.user_name as replay_name,
+		    d.user_name,
+		    d.head_url
+		FROM
+			t_reply a
+		LEFT JOIN t_reply b ON b.id = a.replay_id
+		LEFT JOIN t_user_info c ON b.user_id = c.id
+		LEFT JOIN t_user_info d ON a.user_id = d.id
+		<where>
+  			a.invitation_id = #{invitation_id}
+		</where>
+		GROUP BY a.reply_time DESC
+		limit #{rowNum},#{pageSize}
+	</select>
+	<insert id="register" parameterType="actical.model.PlModel" useGeneratedKeys="true" keyProperty="id">
+	    insert into t_user_info (
+	        user_name,
+	        login_id,
+	        email,
+	        create_time
+	        )values(
+	        #{userName},
+	        #{userName},
+	        #{email},
+	        now()
+        )
+	</insert>
+	<insert id="saveReplay" parameterType="actical.model.PlModel" useGeneratedKeys="true" keyProperty="id">
+	    insert into t_reply (
+	        invitation_id,
+	        user_id,
+	        content,
+	        reply_time,
+	        replay_id
+	        )values(
+	        #{invitationId},
+	        #{userId},
+	        #{content},
+	        now(),
+	        #{replayId}
+        )
+	</insert>
+	<insert id="saveInfo" parameterType="actical.model.PlModel">
+	    insert into t_info (
+	        invitation_id,
+	        user_id,
+	        replay_id,
+	        create_time
+	        )values(
+	        #{invitationId},
+	        #{userId},
+	        #{replayToId},
+	        now()
+        )
+	</insert>
+	<select id="getReplyCount" parameterType="int" resultType="int">
+		select count(0) from t_reply 
+		<where>
+  			invitation_id = #{value}
+		</where>
+	</select>
+	<delete id="delAct">
+		delete from t_invitation where id=#{value}
+	</delete>
+	<delete id="delReplay">
+		delete from t_reply where invitation_id=#{value}
+	</delete>
+	<delete id="delReplayByReplayId">
+		delete from t_reply where id=#{value}
+	</delete>
+	<select id="getInfoList" resultMap="infoMap">
+		select a.id,a.user_id,a.is_read,a.invitation_id,b.title,c.content from t_info a
+		LEFT JOIN t_invitation b on b.id = a.invitation_id
+		LEFT JOIN t_reply c on c.id = a.replay_id
+		<where>
+			a.user_id = #{userId} and a.is_read = #{isRead}
+		</where>
+		GROUP BY a.create_time DESC
+		limit #{rowNum},#{pageSize}
+	</select>
+	<update id="readInfo">
+		update t_info set is_read = 1,modify_time = now() where id = #{value}
+	</update>
+	<delete id="delInfo">
+		delete from t_info where id = #{value}
+	</delete>
+</mapper>

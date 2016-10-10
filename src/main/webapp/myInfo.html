@@ -1,0 +1,33 @@
+<meta charset="UTF-8" />
+<div ng-controller = "infoCtrl">
+	<!-- Single button -->
+	<div class="btn-group">
+	  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+	    {{readFlag}}<span class="caret"></span>
+	  </button>
+	  <ul class="dropdown-menu" role="menu">
+	    <li><a href="javascript:0" ng-click="readBtn(1)">已读</a></li>
+	    <li><a href="javascript:0" ng-click="readBtn(0)">未读</a></li>
+	  </ul>
+	</div>
+    <section id="comments">
+       <ol class="commentlist">
+           <li class="comment even thread-odd thread-alt depth-1" ng-repeat = "actData in actDatas">
+               <article id="comment-4">
+                   <blockquote>
+                   	  <button type="button" title="{{delTitle}}" class="close" ng-click="read($index,actData.id,actData.invitationId,delEle)"><span aria-hidden="true">×</span></button>
+                      <p>
+                          <span>来自文章：</span>
+                          <a href="javascript:0" ng-click="readR($index,actData.id,actData.invitationId)" ng-bind="actData.title"></a>
+                          <span>有新回复，点击</span>
+                          <a href="javascript:0" ng-click="readR($index,actData.id,actData.invitationId)">查看</a>
+                      </p>
+					</blockquote>
+               </article>
+               <!-- end of comment -->
+           </li>
+           <div id="pagination" class="pagination">
+		   </div>
+       </ol>
+   </section>
+</div>
